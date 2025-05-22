@@ -179,7 +179,7 @@ class TestUrbanRoutes:
         address_to = data.address_to #agregar dirección hasta
         routes_page.set_from(address_from)
         routes_page.set_to(address_to)
-        # veriricar que los valores sean corectos
+        # verificar que los valores sean correctos
         assert routes_page.get_from() == address_from
         assert routes_page.get_to() == address_to
     #Seleccionamos el taxi y la tarifa
@@ -190,18 +190,18 @@ class TestUrbanRoutes:
         valid_selection = self.driver.find_element(*UrbanRoutesLocators.comfort_tariff_button)
         assert 'tcard active' in valid_selection.get_attribute('class'), "La tarifa comfort no fue seleccionada"
 
-    #Seleccionamos boton de telefono y validamos que abra la ventana para ingresar los datos
+    #Seleccionamos botón de teléfono y validamos que abra la ventana para ingresar los datos
     def test_phone_modal_text_is_correct(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_phone_button()
         assert routes_page.set_phone() == 'Introduce tu número de teléfono', f"Texto inesperado: {routes_page.set_phone()}"
-    #Escribimos el número de telefon oen el campo y validamos que se ingrese correctamente
+    #Escribimos el número de teléfono oen el campo y validamos que se ingrese correctamente
     def test_write_phone(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.write_phone_number()
         phone_current =routes_page.get_phone()
         assert phone_current == data.phone_number, f"Número esperado {data.phone_number}, pero se tiene {phone_current}"
-    #Enviamos el número para conocer el codigo
+    #Enviamos el número para conocer el código
     def test_click_next(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.click_next()
@@ -217,19 +217,19 @@ class TestUrbanRoutes:
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.send_info()
         assert routes_page.validate_confirm() == '+1 123 123 12 12', f"Texto inesperado: {routes_page.validate_confirm()}"
-    #Seleccionamos el botón para agregar un metodo de pago
+    #Seleccionamos el botón para agregar un método de pago
     def test_click_payment_method(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.click_payment_method()
         assert routes_page.validate_playment() == 'Método de pago', f"Texto inesperado: {routes_page.validate_playment()}"
 
-    #seleccionamos el boton para agregar una tarjeta dentro del modal
+    #seleccionamos el bóton para agregar una tarjeta dentro del modal
     def test_click_add_card(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.click_add_card()
         assert routes_page.validate_add_card() == 'Agregar tarjeta', f"Texto inesperado: {routes_page.validate_add_card()}"
 
-    #Agregamos trajeta y codigo y validamos que este sean correctos
+    #Agregamos tarjeta y código y validamos que este sean correctos
     def test_add_card(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_number()
