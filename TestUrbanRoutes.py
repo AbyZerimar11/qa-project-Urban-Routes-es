@@ -73,6 +73,9 @@ class TestUrbanRoutes:
 
         routes_page.click_agree_card()
         assert routes_page.validate_agree
+        '''from selenium.webdriver.common.by import By
+        self.driver.find_element(By.XPATH, "//input[@id='number']").click()
+        self.driver.find_element(By.XPATH, "//*[text()='Agregar']").click()'''
 
         routes_page.close_modal()
         assert routes_page.validate_close() == "Tarjeta"
