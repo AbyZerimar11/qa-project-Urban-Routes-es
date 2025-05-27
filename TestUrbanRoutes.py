@@ -71,7 +71,7 @@ class TestUrbanRoutes:
         assert routes_page.validate_card == data.card_number
         assert routes_page.validate_code_card == data.card_code
 
-        routes_page.click_agree_card()
+        routes_page.click_agree_card() #clic para agregar
         assert routes_page.validate_agree
         '''from selenium.webdriver.common.by import By
         self.driver.find_element(By.XPATH, "//input[@id='number']").click()
